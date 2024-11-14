@@ -1,0 +1,130 @@
+﻿@*@model IEnumerable<FINALGARETTOJUAN.Models.Producto>*@
+@model FINALGARETTOJUAN.ViewModels.VmProductos
+<head>
+    <link href="~/css/estilos.css" rel="stylesheet" />
+</head>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Productos</h1>
+
+<table class="table custom-table">
+    <tr>
+        <td>
+            <a asp-action="Create" class="btn btn-primary">Cargar Nuevo Producto</a>
+        </td>
+      
+    </tr>
+</table>
+
+<form asp-action="Index" method="get">
+    Modelos: <select name="IdModelo" asp-for="IdModelo" asp-items="Model.ListarModelo">
+        <option value="">Todas</option>
+    </select>
+    Tipos: <select name="IdTipo" asp-for="IdTipo" asp-items="Model.ListarTipo">
+        <option value="">Todas</option>
+    </select>
+  
+    <input type="submit" value="Filtrar" />
+</form>
+<table class="table custom-table">
+        <thead>
+            <tr>
+          
+                <th>
+                    @Html.DisplayNameFor(model => model.ListaProductos.FirstOrDefault().Descripcion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ListaProductos.FirstOrDefault().Modelo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ListaProductos.FirstOrDefault().Tipo)
+                </th>
+                <th>
+                    Precio
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ListaProductos.FirstOrDefault().Foto)
+                </th>
+                
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.ListarModelo != null)
+            {
+
+                @foreach (var item in Model.ListaProductos)
+                {
+                        <tr>
+           
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Descripcion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Modelo.Descripcion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Tipo.Descripcion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+
+                                <td>
+
+                                    @*   mientras no tenga foto, no muestro nada *@
+                                    @if (!string.IsNullOrEmpty(item.Foto))
+                                    {
+                                        <div class="contenedorimagen">
+                                         <img src="@Url.Content("~/Fotografia/" + item.Foto)" class="imagen" />
+                                        </div>
+                                    }
+
+
+                                </td>
+                    
+                            <td>
+                                 <div class="botones">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm btn-custom">Editar</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm btn-custom">Detalles</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm btn-custom">Eliminar</a>
+                                </div>
+                            </td>
+                     
+                        </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5">
+                        <h4>No existen datos segun filtros</h4>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+</table>
+<!-- Paginador -->
+<nav aria-label="Page navigation" class="mt-4">
+    <ul class="pagination justify-content-center">
+        <li class="page-item @(Model.paginadorVM.paginaActual == 1 ? "disabled" : "")">
+            <a class="page-link" asp-action="Index" asp-route-pagina="@(Model.paginadorVM.paginaActual - 1)"
+               asp-route-BuscProdNombre="@Model.ListaProductos" asp-route-TipoId="@Model.IdModelo">Anterior</a>
+        </li>
+
+        @for (int i = 1; i <= Model.paginadorVM.cantPaginas; i++)
+        {
+            <li class="page-item @(Model.paginadorVM.paginaActual == i ? "active" : "")">
+                <a class="page-link" asp-action="Index" asp-route-pagina="@i"
+                   asp-route-BuscProdNombre="@Model.ListarModelo" asp-route-TipoId="@Model.IdTipo">@i</a>
+            </li>
+        }
+        <li class="page-item @(Model.paginadorVM.paginaActual == Model.paginadorVM.cantPaginas ? "disabled" : "")">
+            <a class="page-link" asp-action="Index" asp-route-pagina="@(Model.paginadorVM.paginaActual + 1)"
+               asp-route-BuscProdNombre="@Model.ListarModelo" asp-route-TipoId="@Model.IdTipo">Siguiente</a>
+        </li>
+    </ul>
+</nav>

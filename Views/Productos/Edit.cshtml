@@ -1,0 +1,76 @@
+﻿@model FINALGARETTOJUAN.Models.Producto
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<head>
+    <link href="~/css/estilos.css" rel="stylesheet" />
+</head>
+
+<h1 class="text-center">Editar </h1>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label" style="color:black"></label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdTipo" class="control-label" style="color:black">Tipo</label>
+                <select asp-for="IdTipo" class="form-control" asp-items="ViewBag.IdTipo">
+                  <span asp-validation-for="IdTipo" class="text-danger"></span>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label" style="color:black">Precio</label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <label asp-for="IdModelo" class="control-label" style="color:black">Modelo</label>
+                <select asp-for="IdModelo" class="form-control" asp-items="ViewBag.IdModelo">
+
+                    <span asp-validation-for="IdModelo" class="text-danger"></span>
+
+                </select>
+            </div>
+          
+            <div class="form-group">
+                <label asp-for="Foto" class="control-label" style="color:black"></label>
+                <input type="file" id="imagen" name="imagen" class="form-control" accept="image/jpg" />
+            </div>
+            <!-- Si ya existe una foto, la mostramos en el formulario de edición -->
+            @if (!string.IsNullOrEmpty(Model.Foto))
+            {
+                <div class="form-group">
+                    <label>Imagen Actual:</label>
+                    <img src="@Url.Content("~/Fotografia/" + Model.Foto)" class="img-thumbnail" style="max-width:150px" />
+                </div>
+            }
+           @*  @if (!string.IsNullOrEmpty(Model.Foto))
+            {
+                <img src="@Url.Content("~/Fotografia/" + Model.Foto)" class="border border-primary" style="max-width:50px" />
+
+            } *@
+            <input type= "hidden" asp-for="Foto"/>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <br>
+    <a asp-action="Index" class="btn btn-primary">Volver a Inicio</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

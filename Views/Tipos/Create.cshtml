@@ -1,0 +1,63 @@
+﻿@model FINALGARETTOJUAN.Models.Tipo
+
+@{
+    ViewData["Title"] = "Create";
+}
+<head>
+    <link href="~/css/estilos.css" rel="stylesheet" />
+</head>
+<h1 class ="text-center">Crear</h1>
+
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label"></label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+<form asp-action="Importar" enctype="multipart/form-data">
+    <table class="table">
+        <thead>
+            <tr>
+                <th style ="color:black">Archivo CSV</th>
+                <th style="color:black">Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <label for="import" class="control-label" style="color:black">Seleccione Archivo CSV para poder importar Modelos</label>
+                </td>
+                <td>
+                    <input asp-for="import" type="file" id="import" class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="text-center">
+                    <input type="submit" value="Importar" class="btn btn-primary" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
+
+<div>
+    <a asp-action="Index" class="btn btn-primary">Volver a Inicio</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

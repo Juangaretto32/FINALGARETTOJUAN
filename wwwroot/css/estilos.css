@@ -1,0 +1,143 @@
+﻿body {
+    background-color: burlywood;
+}
+
+    
+    
+            h1{
+            font-size: 50px;
+            font-family: 'Script MT';
+            color: black;
+            }
+
+
+.custom-table {
+    background-color: black; /* Fondo blanco para la tabla */
+    border-radius: 10px; /* Bordes redondeados para la tabla */
+    color: black;
+}
+
+    .custom-table td {
+        background-color: burlywood; /* Fondo verde claro para las celdas */
+        color: black;
+    }
+
+            .custom-table th {
+                background-color: burlywood; /* Fondo azul para las celdas del encabezado */
+                color: black; /* Texto blanco para el encabezado */
+            }
+
+        .btn-custom {
+            margin: 5px 0; /* Espaciado entre los botones */
+        }
+
+.custom-table td, .custom-table th {
+    font-size: 30px; /* Ajusta el tamaño de la fuente a lo que necesites */
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+
+.botones {
+    font-family: 'Script MT', cursive; /* Asegúrate de que la fuente esté disponible */
+    font-size: 22px; /* Puedes agregar el tamaño de la fuente si es necesario */
+}
+
+.imagen {
+    max-width: 220px; /* Asegura que la imagen no se desborde */
+    height: auto;
+}
+.contenedorimagen {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 50vh; /* Asegura que el contenedor ocupe toda la altura de la ventana */
+}
+
+.td, .th {
+    padding: 10px;
+    text-align: center; /* Centra el contenido horizontalmente */
+    vertical-align: middle; /* Centra el contenido verticalmente */
+}
+
+.LetrasDetails {
+    font-size: 50px; /* Ajusta el tamaño de la fuente a lo que necesites */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.detailsDescripcion {
+    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+
+
+/* Contenedor principal del formulario */
+.row {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center; /* Centra el formulario en la pantalla */
+}
+
+/* Estilo para la columna donde está el formulario */
+.col-md-4 {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos de los campos */
+.control-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Input fields */
+.form-control {
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 8px;
+}
+
+/* Estilo para los errores de validación */
+.text-danger {
+    color: red;
+    font-size: 12px;
+}
+
+/* Botón de envío */
+.btn-primary {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    width: 50%;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: red;
+}
+
+/* Espaciado adicional entre los elementos del formulario */
+.form-group {
+    margin-bottom: 20px;
+    color: black;
+}
+
+/* Estilos para el select */
+select.form-control {
+    background-color: #ffffff;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+}
+

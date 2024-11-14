@@ -1,0 +1,50 @@
+﻿@model FINALGARETTOJUAN.Models.Producto
+<head>
+    <link href="~/css/estilos.css" rel="stylesheet" />
+</head>
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="text-center">Detalles</h1>
+
+<div>
+    <hr />
+    <dl class="row">       
+    
+        <dt class="col-sm-2" style="font-size: 20px ; color:black">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class = "col-sm-10" style="font-size: 20px">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt class="col-sm-2" style="font-size: 20px;color:black">
+            @Html.DisplayNameFor(model => model.Modelo)
+        </dt>
+        <dd class = "col-sm-10" style="font-size: 20px">
+            @Html.DisplayFor(model => model.Modelo.Descripcion)
+        </dd>
+        <dt class="col-sm-2" style="font-size: 20px;color:black">
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+        <dd class="col-sm-10" style="font-size: 20px;color:black">
+            @Html.DisplayFor(model => model.Tipo.Descripcion)
+        </dd>
+        <dt class="col-sm-2" style="font-size: 20px;color:black">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="col-sm-10" style="font-size: 20px;color:black">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dd>
+            <b class="col-sm-2" style="font-size: 20px;color:black">Foto</b>
+        </dd>      
+            <dd class="col-sm-2" >
+                <img src="@Url.Content("~/Fotografia/" + Model.Foto)" class="imagen" />
+            </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning btn-sm btn-custom botones">Editar</a>|
+    <a asp-action="Index" class="btn btn-primary">Volver a Inicio</a>
+</div>

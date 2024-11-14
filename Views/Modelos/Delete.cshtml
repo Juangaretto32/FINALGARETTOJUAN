@@ -1,0 +1,27 @@
+﻿@model FINALGARETTOJUAN.Models.Modelo
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<head>
+    <link href="~/css/estilos.css" rel="stylesheet" />
+</head>
+<h3 class ="text-center" >Seguro que quieres borrar este Tipo de Modelo?</h3>
+<div>
+    
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2" style="font-size: 20px;color:black">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class="col-sm-10" style="font-size: 20px">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Eliminar" class="btn btn-danger btn-sm btn-custom botones" /> |
+        <a asp-action="Index" class="btn btn-primary">Volver al Inicio</a>
+    </form>
+</div>
